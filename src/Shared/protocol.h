@@ -1,0 +1,22 @@
+#pragma once
+
+#include <windows.h>
+
+// IOCTL 代碼定義
+#define IOCTL_READ_MEMORY  CTL_CODE(FILE_DEVICE_UNKNOWN, 0x800, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define IOCTL_WRITE_MEMORY CTL_CODE(FILE_DEVICE_UNKNOWN, 0x801, METHOD_BUFFERED, FILE_ANY_ACCESS)
+#define IOCTL_EXEC_SCRIPT  CTL_CODE(FILE_DEVICE_UNKNOWN, 0x802, METHOD_BUFFERED, FILE_ANY_ACCESS)
+
+// 讀寫記憶體結構體
+typedef struct _RW_MEMORY {
+    ULONG Pid;
+    PVOID Address;
+    PVOID Buffer;
+    ULONG Size;
+} RW_MEMORY, *PRW_MEMORY;
+
+// 執行腳本結構體
+typedef struct _EXEC_SCRIPT {
+    ULONG Pid;
+    char Script[1024];
+} EXEC_SCRIPT, *PEXEC_SCRIPT;
