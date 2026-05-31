@@ -14,3 +14,16 @@ jobs:
       run: |
         $vsPath = & "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -requires Microsoft.Component.MSBuild -find MSBuild\Current\Bin\MSBuild.exe
         & $vsPath YourSolution.sln /p:Configuration=Release /p:Platform=x64
+
+    # --- 新增這段程式碼 ---
+    - name: Upload Build Files
+      uses: actions/upload-artifact@v4
+      with:
+        name: ExecutorFiles
+        # 這裡列出所有可能產生檔案的資料夾路徑
+        path: |
+          x64/Release/
+          src/Driver/x64/Release/
+          src/Injector/x64/Release/
+          src/DiscordExtension/x64/Release/
+    # ---------------------
