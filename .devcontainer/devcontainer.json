@@ -1,0 +1,16 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/windows:windowsservercore-ltsc2019",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/powershell:1": {}
+  },
+  "postCreateCommand": "winget install --id Microsoft.WindowsDriverKit --accept-package-agreements --accept-source-agreements",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools"
+      ]
+    }
+  }
+}
